@@ -2,6 +2,7 @@
   "name": "bf-remote",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@11.10.0",
   "scripts": {
     "dev": "pnpm -C web build && pnpm -C server dev",
     "build": "pnpm -C web build",
