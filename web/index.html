@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Paint the theme background immediately to avoid a white flash on load -->
+    <style>
+      html {
+        background: #fcfcfc;
+      }
+      @media (prefers-color-scheme: dark) {
+        html:not(.light) {
+          background: #111827;
+        }
+      }
+      html.dark {
+        background: #111827;
+      }
+      html.light {
+        background: #fcfcfc;
+      }
+    </style>
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <meta name="apple-mobile-web-app-title" content="YarosFPV Remote" />
+
+    <!-- Theme -->
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#fcfcfc"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#111827"
+    />
+
+    <!-- Primary meta -->
+    <title>YarosFPV Remote Betaflight</title>
+    <meta name="title" content="YarosFPV Remote Betaflight" />
+    <meta
+      name="description"
+      content="Let someone you trust configure your quad from anywhere, through the official Betaflight Configurator. Plug in, share a code, done."
+    />
+    <meta name="author" content="Yaros" />
+    <link rel="canonical" href="https://remote.yarosfpv.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://remote.yarosfpv.com/" />
+    <meta property="og:title" content="YarosFPV Remote Betaflight" />
+    <meta
+      property="og:description"
+      content="Let someone you trust configure your quad from anywhere, through the official Betaflight Configurator."
+    />
+    <meta property="og:image" content="https://remote.yarosfpv.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content="https://remote.yarosfpv.com/" />
+    <meta property="twitter:title" content="YarosFPV Remote Betaflight" />
+    <meta
+      property="twitter:description"
+      content="Let someone you trust configure your quad from anywhere, through the official Betaflight Configurator."
+    />
+    <meta
+      property="twitter:image"
+      content="https://remote.yarosfpv.com/icon.svg"
+    />
+
+    <!-- Font preloads -->
+    <link
+      rel="preload"
+      href="/fonts/atkinson-regular.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/atkinson-bold.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
+
+    <!-- Theme preference (prevents flash of wrong theme) -->
+    <script>
+      (function () {
+        const saved = localStorage.getItem("theme-preference");
+        if (saved === "light") {
+          document.documentElement.classList.add("light");
+        } else if (saved === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

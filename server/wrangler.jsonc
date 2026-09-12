@@ -1,0 +1,28 @@
+{
+    "name": "bf-remote",
+    "main": "src/index.ts",
+    "compatibility_date": "2025-09-01",
+    "assets": {
+        "directory": "../web/dist",
+        "binding": "ASSETS"
+    },
+    "durable_objects": {
+        "bindings": [
+            {
+                "name": "RELAY",
+                "class_name": "SessionRelay"
+            }
+        ]
+    },
+    "migrations": [
+        {
+            "tag": "v1",
+            "new_sqlite_classes": [
+                "SessionRelay"
+            ]
+        }
+    ],
+    "observability": {
+        "enabled": true
+    }
+}
