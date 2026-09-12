@@ -18,17 +18,16 @@
   <h2 class="section-label mb-5">Share your quad</h2>
 
   {#if !supported}
-    <p class="mb-5 rounded-lg border border-[rgba(var(--color-accent),0.3)] bg-[rgba(var(--color-accent),0.1)] px-4 py-3 text-sm text-[rgb(var(--color-accent))]">
+    <p
+      class="mb-5 rounded-lg border border-[rgba(var(--color-accent),0.3)] bg-[rgba(var(--color-accent),0.1)] px-4 py-3 text-sm text-[rgb(var(--color-accent))]"
+    >
       This browser doesn't support Web Serial. Open the page in
       <strong>Chrome</strong> or <strong>Edge</strong> on desktop to share a flight
       controller.
     </p>
   {/if}
 
-  <ol
-    class="mb-6 flex-1 space-y-4"
-    class:opacity-50={!supported}
-  >
+  <ol class="mb-6 flex-1 space-y-4" class:opacity-50={!supported}>
     {#each steps as step, i}
       <li class="flex items-start gap-3">
         <span
@@ -63,6 +62,11 @@
       Add
     </button>
   </div>
+
+  <p class="mb-4 text-sm leading-relaxed text-[rgb(var(--color-text-muted))]">
+    Disconnect the flight controller and close Betaflight first - only one app
+    can talk to it at a time.
+  </p>
 
   {#if session.error}
     <p
