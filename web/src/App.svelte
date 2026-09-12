@@ -1,4 +1,5 @@
 <script lang="ts">
+  import githubIcon from "./assets/github.svg?raw";
   import HelpCard from "./lib/HelpCard.svelte";
   import { session } from "./lib/session.svelte";
   import ShareActive from "./lib/ShareActive.svelte";
@@ -58,9 +59,22 @@
   {/if}
 
   <footer
-    class="mt-8 text-center text-xs leading-relaxed text-[rgb(var(--color-text-muted))]"
+    class="mt-8 text-center text-sm leading-relaxed text-[rgb(var(--color-text-muted))]"
   >
-    Not affiliated with Betaflight. Works with the official Betaflight
-    Configurator.
+    <p>
+      Not affiliated with Betaflight. Works with the official Betaflight
+      Configurator.
+    </p>
+    <p class="mt-1 text-base">
+      <a
+        class="inline-flex items-center gap-1 text-[rgb(var(--color-primary))] hover:underline"
+        href="https://github.com/YLabs-FPV/BF-Remote"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {@html githubIcon}
+        Source on GitHub
+      </a>
+    </p>
   </footer>
 </main>
