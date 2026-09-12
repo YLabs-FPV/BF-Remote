@@ -6,16 +6,23 @@
 </script>
 
 <main class="mx-auto max-w-5xl px-4 py-10 sm:py-16">
-  <header class="mb-10 text-center">
+  <header class="mb-8 text-center">
     <div
       class="hero-icon-wrap mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl"
     >
       <img src="/icon.svg" alt="Logo" class="h-7 w-7" />
     </div>
-    <p class="text-sm text-[rgb(var(--color-text-muted))]">YarosFPV</p>
-    <h1 class="mb-2 text-3xl font-bold">Remote</h1>
+    <h1 class="text-3xl font-bold">Remote</h1>
+    <p class="text-sm text-[rgb(var(--color-text-muted))]">
+      by <a
+        class="text-[rgb(var(--color-primary))] hover:text-[rgb(var(--color-primary-hover))] transition-colors"
+        href="https://yarosfpv.com"
+        target="_blank"
+        rel="noopener noreferrer">YarosFPV</a
+      >
+    </p>
     <p
-      class="mx-auto max-w-md leading-relaxed text-[rgb(var(--color-text-muted))]"
+      class="mx-auto max-w-md mt-4 leading-relaxed text-[rgb(var(--color-text-muted))]"
     >
       Let someone you trust configure your quad from anywhere through the
       official Betaflight Configurator
