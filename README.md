@@ -60,7 +60,7 @@ pnpm install      # install workspace deps
 
 mise run dev      # front-end (:5173) + relay (:8787), proxied
 pnpm typecheck    # shared → server → web
-pnpm deploy       # build the front-end, then wrangler deploy
+pnpm run deploy   # build the front-end, then wrangler deploy
 ```
 
 Planning to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md).

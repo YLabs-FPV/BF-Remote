@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pnpm -C web build && pnpm -C server dev",
     "build": "pnpm -C web build",
-    "deploy": "pnpm -C web build && pnpm -C server deploy",
+    "deploy": "pnpm -C web build && pnpm -C server run deploy",
     "typecheck": "pnpm -C shared typecheck && pnpm -C server typecheck && pnpm -C web check"
   }
 }
