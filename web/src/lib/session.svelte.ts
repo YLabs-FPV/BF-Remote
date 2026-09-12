@@ -61,12 +61,13 @@ class Session {
         this.#onDevicePresent(e);
         this.refreshPorts();
       });
-      navigator.serial.addEventListener("disconnect", () => this.refreshPorts());
+      navigator.serial.addEventListener("disconnect", () =>
+        this.refreshPorts(),
+      );
       this.refreshPorts();
     }
   }
 
-  // ── Device selection ──────────────────────────────────────────────────────
   async refreshPorts(): Promise<void> {
     if (!navigator.serial) return;
     const granted = await navigator.serial.getPorts();
@@ -154,18 +155,27 @@ class Session {
     const port = selected ?? (await this.#resolvePort("auto"));
     if (!port) return; // no device chosen
 
-    try {
-      this.status = "connecting";
-      this.error = null;
+    this.status = "connecting";
+    this.error = null;
 
+    try {
       const res = await fetch("/api/new");
       const { code } = (await res.json()) as { code: string };
       this.code = code;
-
       await this.#openWs(code);
+    } catch {
+      this.error =
+        "Couldn't reach the relay. Check your connection and try again.";
+      this.status = "error";
+      await this.#teardownAll();
+      return;
+    }
+
+    try {
       await this.#attachSerial(port);
-    } catch (e) {
-      this.error = e instanceof Error ? e.message : "Couldn't start sharing.";
+    } catch {
+      this.error =
+        "Couldn't open the flight controller. Disconnect it from Betaflight first, then try again.";
       this.status = "error";
       await this.#teardownAll();
     }
@@ -230,7 +240,7 @@ class Session {
   #onDevicePresent(e: Event): void {
     if (this.status !== "sharing" || this.fcOnline || this.reconnecting) return;
     const port = e.target as SerialPort;
-    if (!this.#matchesLast(port)) return; // a different device — not our FC
+    if (!this.#matchesLast(port)) return; // a different device - not our FC
 
     this.reconnecting = true;
     this.#tryAttach(port, 6).finally(() => {
@@ -250,7 +260,7 @@ class Session {
     return true;
   }
 
-  /** Open the port, retrying briefly — a just-replugged device needs a moment. */
+  /** Open the port, retrying briefly - a just-replugged device needs a moment. */
   async #tryAttach(port: SerialPort, retries: number): Promise<boolean> {
     for (let i = 0; i <= retries; i++) {
       try {
